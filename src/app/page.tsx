@@ -252,11 +252,10 @@ export default function Home() {
             <li>6 tipos de post para o mês inteiro</li>
             <li>Fotos de exemplo e passo a passo</li>
           </ul>
-          {CONFIG.precoAntigo && (
-            <p className="text-xl text-choco-2 line-through">
-              <span className="sr-only">Preço anterior: </span>de R$ {CONFIG.precoAntigo}
-            </p>
-          )}
+          <p className="mx-auto mb-[30px] max-w-[520px] rounded-[22px] bg-manteiga px-6 py-4 font-medium">
+            🎁 <strong>Bônus:</strong> teste grátis do CatálogoPlace, seu cardápio online com pedidos direto no WhatsApp
+          </p>
+          {CONFIG.ancoraValor && <p className="text-lg text-choco-2">{CONFIG.ancoraValor}</p>}
           <p className="mt-1.5 mb-1 font-display text-[clamp(64px,11vw,104px)] leading-none text-morango">
             <span className="sr-only">Preço atual: </span>
             <small className="mr-1.5 align-[.9em] text-[.4em]">R$</small>
