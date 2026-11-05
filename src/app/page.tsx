@@ -305,7 +305,7 @@ export default function Home() {
         Pack 30 Posts para Confeitaria · Canva é marca registrada de Canva Pty Ltd. Este produto não é afiliado ao Canva.
       </footer>
 
-      <MobileBar preco={CONFIG.preco} />
+      <MobileBar href={CONFIG.checkout} preco={CONFIG.preco} />
     </>
   );
 }

@@ -148,10 +148,10 @@ export function Faq({ items }: { items: [string, string][] }) {
 
 /* ---------- MobileBar ---------- */
 
-export function MobileBar({ preco }: { preco: string }) {
+export function MobileBar({ href, preco }: { href: string; preco: string }) {
   return (
     <div className="fixed inset-x-3 bottom-3 z-40 hidden max-tab:block">
-      <Button href="#oferta" size="bar">
+      <Button href={href} size="bar">
         Quero meu pack · R$ {preco}
       </Button>
     </div>
