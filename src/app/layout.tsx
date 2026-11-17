@@ -3,6 +3,7 @@ import { DM_Sans, Shrikhand } from "next/font/google";
 import Script from "next/script";
 import { CheckoutTracking } from "@/components/CheckoutTracking";
 import { CONFIG } from "@/config";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const display = Shrikhand({
@@ -19,26 +20,11 @@ const sans = DM_Sans({
   display: "swap",
 });
 
-// URL absoluta para a imagem do Open Graph. Na Vercel é preenchida sozinha;
-// NEXT_PUBLIC_SITE_URL é opcional (ex.: domínio próprio).
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Pack 30 Posts para Confeitaria — editáveis no Canva",
+  metadataBase: new URL(SITE_URL),
+  title: "Calculadora de Precificação para Confeitaria",
   description:
-    "30 posts prontos para confeitarias e docerias venderem mais no Instagram. Editáveis no Canva: troque a foto, o texto e poste.",
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    title: "Pack 30 Posts para Confeitaria",
-    description: "30 posts prontos e editáveis no Canva para sua confeitaria vender mais.",
-    images: [{ url: "/img/post-01.jpg", width: 540, height: 675, alt: "Post: Novidade no cardápio" }],
-  },
+    "Descubra em 2 minutos se você está perdendo dinheiro em cada doce. Ingredientes, embalagem, gás, sua hora e taxas do iFood, direto do celular.",
 };
 
 export const viewport: Viewport = {

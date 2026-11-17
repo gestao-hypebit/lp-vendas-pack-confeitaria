@@ -3,6 +3,23 @@ import type { CSSProperties } from "react";
 import { CONFIG } from "@/config";
 import { Gallery } from "@/components/Gallery";
 import { Button, Faq, Marquee, MobileBar, Section, Starburst } from "@/components/ui";
+import { TrackViewContent } from "@/components/TrackViewContent";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pack 30 Posts para Confeitaria — editáveis no Canva",
+  description:
+    "30 posts prontos para confeitarias e docerias venderem mais no Instagram. Editáveis no Canva: troque a foto, o texto e poste.",
+  alternates: { canonical: "/pack" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/pack",
+    title: "Pack 30 Posts para Confeitaria",
+    description: "30 posts prontos e editáveis no Canva para sua confeitaria vender mais.",
+    images: [{ url: "/img/post-01.jpg", width: 540, height: 675, alt: "Post: Novidade no cardápio" }],
+  },
+};
 
 const C = {
   choco: "var(--color-choco)",
@@ -33,7 +50,7 @@ const CATS = [
 ];
 
 const PASSOS = [
-  { t: "Compre", p: "Pagamento seguro e acesso liberado na hora, direto no seu e-mail." },
+  { t: "Compre", p: "Pagamento seguro. O acesso chega no seu e-mail logo após a confirmação do pagamento." },
   { t: "Abra no Canva", p: "Clique no link e o pack aparece na sua conta do Canva, pronto para editar." },
   { t: "Personalize e poste", p: "Arraste suas fotos por cima, troque textos e preços, baixe e publique." },
 ];
@@ -75,11 +92,12 @@ function Check() {
   );
 }
 
-export default function Home() {
+export default function PackPage() {
   return (
     <>
+      <TrackViewContent nome="Pack 30 Posts para Confeitaria" valor={CONFIG.pack.preco} />
       <div className="bg-choco px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[.14em] text-manteiga">
-        Acesso imediato · Editável no Canva grátis
+        Acesso por e-mail · Editável no Canva grátis
       </div>
 
       {/* HERO */}
@@ -98,7 +116,7 @@ export default function Home() {
               Quero meu pack
             </Button>
             <div className="mt-7 flex flex-wrap gap-2.5">
-              {["30 artes 4:5", "Canva grátis", "Acesso na hora"].map((c) => (
+              {["30 artes 4:5", "Canva grátis", "Acesso por e-mail"].map((c) => (
                 <span key={c} className="rounded-full bg-creme px-4 py-2 text-sm font-bold">
                   {c}
                 </span>
@@ -243,7 +261,7 @@ export default function Home() {
             rotate={12}
             className="absolute -top-[50px] -right-[30px] w-[150px] text-[13px] max-tab:-right-2 max-tab:w-[120px]"
           >
-            ACESSO<b className="block font-display text-[34px] leading-none font-normal max-tab:text-[28px]">já!</b>
+            SÓ<b className="block font-display text-[30px] leading-none font-normal max-tab:text-[24px]">R${CONFIG.pack.preco.split(",")[0]}</b>
           </Starburst>
           <p className="kicker">Pack completo</p>
           <h2 className="text-[clamp(34px,5vw,52px)]">30 posts para confeitaria</h2>
@@ -255,14 +273,14 @@ export default function Home() {
           <p className="mx-auto mb-[30px] max-w-[520px] rounded-[22px] bg-manteiga px-6 py-4 font-medium">
             🎁 <strong>Bônus:</strong> teste grátis do CatálogoPlace, seu cardápio online com pedidos direto no WhatsApp
           </p>
-          {CONFIG.ancoraValor && <p className="text-lg text-choco-2">{CONFIG.ancoraValor}</p>}
+          {CONFIG.pack.ancoraValor && <p className="text-lg text-choco-2">{CONFIG.pack.ancoraValor}</p>}
           <p className="mt-1.5 mb-1 font-display text-[clamp(64px,11vw,104px)] leading-none text-morango">
             <span className="sr-only">Preço atual: </span>
             <small className="mr-1.5 align-[.9em] text-[.4em]">R$</small>
-            {CONFIG.preco}
+            {CONFIG.pack.preco}
           </p>
           <p className="mb-7 text-choco-2">pagamento único · sem mensalidade</p>
-          <Button href={CONFIG.checkout} size="lg">
+          <Button href={CONFIG.pack.checkout} size="lg">
             Quero meu pack agora
           </Button>
           <div className="mx-auto mt-[34px] flex max-w-[520px] items-center gap-[18px] rounded-[22px] bg-creme px-6 py-5 text-left max-cel:flex-col max-cel:text-center">
@@ -297,15 +315,15 @@ export default function Home() {
           <br />
           quanto seus <em className="not-italic text-manteiga">doces</em>
         </h2>
-        <p className="mb-[34px] text-[19px] opacity-85">30 posts prontos, editáveis no Canva, com acesso na hora.</p>
-        <Button href={CONFIG.checkout}>Quero meu pack</Button>
+        <p className="mb-[34px] text-[19px] opacity-85">30 posts prontos e editáveis no Canva. Acesso enviado por e-mail após a confirmação do pagamento.</p>
+        <Button href={CONFIG.pack.checkout}>Quero meu pack</Button>
       </Section>
 
       <footer className="bg-rodape px-4 pt-7 pb-[100px] text-center text-[13px] text-[#c9a99f]">
         Pack 30 Posts para Confeitaria · Canva é marca registrada de Canva Pty Ltd. Este produto não é afiliado ao Canva.
       </footer>
 
-      <MobileBar href={CONFIG.checkout} preco={CONFIG.preco} />
+      <MobileBar href={CONFIG.pack.checkout}>Quero meu pack · R$ {CONFIG.pack.preco}</MobileBar>
     </>
   );
 }
